@@ -1,6 +1,6 @@
 <?php
     require 'db_function.php';
-    $foods = query("SELECT * FROM foods");
+    $foods = query("SELECT * FROM products where category='makanan'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -190,20 +190,29 @@
                with font-awesome or any other icon font library -->
           
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="http://localhost/studi-kasus-1-bungafairuz/dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-            <a href="pages/gallery.html" class="nav-link">
-              <i class="nav-icon far fa-image"></i>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-hamburger"></i>
               <p>
                 Makanan
               </p>
             </a>
           </li>
-          
+          <li class="nav-item">
+            <a href="http://localhost/studi-kasus-1-bungafairuz/minuman.php" class="nav-link">
+              <i class="nav-icon fas fa-coffee"></i>
+              <p>
+                Minuman
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -222,7 +231,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="http://localhost/studi-kasus-1-bungafairuz/dashboard.php">Dashboard</a></li>
               <li class="breadcrumb-item active">Makanan</li>
             </ol>
           </div>
@@ -241,23 +250,25 @@
               </div> -->
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>No</th>
+                    <th class="col-1">No</th>
                     <th>Nama</th>
                     <th>Keterangan</th>
                     <th>Harga</th>
                   </tr>
                   </thead>
                   <tbody>
+                    <?php $i=1 ?>
                     <?php foreach( $foods as $food) : ?>
                   <tr>
-                    <td> <?= $food["id"]?> </td>
+                    <td class="col-md-1"> <?= $food["id"]?> </td>
                     <td> <?= $food["name"]?></td>
                     <td> <?= $food["detail"]?></td>
                     <td> <?= $food["price"]?></td>
                   </tr>
+                     <?php $i++ ?>
                      <?php endforeach; ?>
                   </tfoot>
                 </table>

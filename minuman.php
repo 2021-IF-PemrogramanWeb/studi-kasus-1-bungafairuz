@@ -1,7 +1,7 @@
-<!-- <?php
-    // require 'db_function.php';
-    // $foods = query("SELECT * FROM foods");
-?> -->
+<?php
+    require 'db_function.php';
+    $drinks = query("SELECT * FROM products where category='minuman'");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,7 +190,7 @@
                with font-awesome or any other icon font library -->
           
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="http://localhost/studi-kasus-1-bungafairuz/dashboard.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -206,14 +206,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="http://localhost/studi-kasus-1-bungafairuz/minuman.php" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-coffee"></i>
               <p>
                 Minuman
               </p>
             </a>
           </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -224,78 +223,67 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <!-- <div class="col-sm-6">
+            <h1>Daftar Makanan</h1>
+          </div>
+          <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v2</li>
+              <li class="breadcrumb-item"><a href="http://localhost/studi-kasus-1-bungafairuz/dashboard.php">Dashboard</a></li>
+              <li class="breadcrumb-item active">Makanan</li>
             </ol>
-          </div>/.col -->
-        </div><!-- /.row -->
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Info boxes -->
         <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-utensils"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Produk</span>
-                <span class="info-box-number">
-                  10
-                  <small>%</small>
-                </span>
+          <div class="col-12">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th class="col-1">No</th>
+                    <th>Nama</th>
+                    <th>Keterangan</th>
+                    <th>Harga</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i=1 ?>
+                    <?php foreach( $drinks as $drink) : ?>
+                  <tr>
+                    <td class="col-md-1"> <?= $i?> </td>
+                    <td> <?= $drink["name"]?></td>
+                    <td> <?= $drink["detail"]?></td>
+                    <td> <?= $drink["price"]?></td>
+                  </tr>
+                     <?php $i++ ?>
+                     <?php endforeach; ?>
+                  </tfoot>
+                </table>
               </div>
-              <!-- /.info-box-content -->
+              <!-- /.card-body -->
             </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
+            <!-- /.card -->
 
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Penjualan</span>
-                <span class="info-box-number">760</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Pelanggan</span>
-                <span class="info-box-number">2,000</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
           </div>
           <!-- /.col -->
         </div>
+        <!-- /.row -->
       </div>
+      <!-- /.container-fluid -->
     </section>
-    
     <!-- /.content -->
   </div>
 
