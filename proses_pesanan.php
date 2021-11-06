@@ -227,7 +227,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Daftar Minuman</h1>
+            <h1>Proses Pesanan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -244,39 +244,29 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
-              <!-- <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
-              </div> -->
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th class="col-1">No</th>
-                    <th>Nama</th>
-                    <th>Keterangan</th>
-                    <th>Harga</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <?php $i=1 ?>
-                    <?php foreach( $drinks as $drink) : ?>
-                  <tr>
-                    <td class="col-md-1"> <?= $i?> </td>
-                    <td> <?= $drink["name"]?></td>
-                    <td> <?= $drink["detail"]?></td>
-                    <td> <?= $drink["price"]?></td>
-                  </tr>
-                     <?php $i++ ?>
-                     <?php endforeach; ?>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
+            <div class="btn-group w-100 mb-2">
+                    <a class="btn btn-info" href="javascript:void(0)" data-filter="1"> Category 1 (WHITE) </a>
+                    <a class="btn btn-info" href="javascript:void(0)" data-filter="2"> Category 2 (BLACK) </a>
+                    <a class="btn btn-info" href="javascript:void(0)" data-filter="3"> Category 3 (COLORED) </a>
+                    <a class="btn btn-info" href="javascript:void(0)" data-filter="4"> Category 4 (COLORED, BLACK) </a>
             </div>
-            <!-- /.card -->
+            <div class="card card-primary">
+              <!-- <div class="card-header">
+                <h4 class="card-title">FilterizR Gallery with Ekko Lightbox</h4>
+              </div> -->
+              <div class="card-body">
+                <div>
+                  <div class="filter-container p-0 row">
+                    <div class="filtr-item" style="width:100%" data-category="1" data-sort="white sample">
+                        
+                    </div>
+                    
+                    
+                  </div>
+                </div>
 
+              </div>
+            </div>
           </div>
           <!-- /.col -->
         </div>
@@ -313,6 +303,7 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
+<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -327,5 +318,21 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  })
+</script>
 </body>
 </html>
