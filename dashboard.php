@@ -213,6 +213,37 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Pesanan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="offset-md-2 nav-item">
+                <a href="http://localhost/studi-kasus-1-bungafairuz/pesanan_diterima.php" class="nav-link">
+                  <p>Pesanan diterima</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item">
+                <a href="#" class="nav-link">
+                  <p>Pesanan diproses</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item">
+                <a href="#" class="nav-link">
+                  <p>Pesanan selesai</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item">
+                <a href="#" class="nav-link">
+                  <p>Pesanan dibatalkan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           
         </ul>
       </nav>

@@ -1,6 +1,6 @@
 <?php
     require 'db_function.php';
-    $drinks = query("SELECT * FROM products where category='minuman'");
+    $orders = query("SELECT * FROM orders where status ='diproses'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -206,12 +206,43 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="http://localhost/studi-kasus-1-bungafairuz/minuman.php" class="nav-link active">
               <i class="nav-icon fas fa-coffee"></i>
               <p>
                 Minuman
               </p>
             </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle"></i>
+              <p>
+                Pesanan
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="offset-md-2 nav-item">
+                <a href="http://localhost/studi-kasus-1-bungafairuz/pesanan_diterima.php" class="nav-link">
+                  <p>Pesanan diterima</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item active">
+                <a href="#" class="nav-link">
+                  <p>Pesanan diproses</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item">
+                <a href="#" class="nav-link">
+                  <p>Pesanan selesai</p>
+                </a>
+              </li>
+              <li class="offset-md-2 nav-item">
+                <a href="#" class="nav-link">
+                  <p>Pesanan dibatalkan</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
@@ -227,12 +258,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Proses Pesanan</h1>
+            <h1>Pesanan Diproses</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://localhost/studi-kasus-1-bungafairuz/dashboard.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Makanan</li>
+              <li class="breadcrumb-item active"><a href="#">Pesanan</a></li>
+              <li class="breadcrumb-item active">Pesanan Diproses</li>
             </ol>
           </div>
         </div>
@@ -241,7 +273,49 @@
 
     <!-- Main content -->
     <section class="content">
-     
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- <div class="card-header">
+                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+              </div> -->
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <th class="col-1">No</th>
+                    <th>Tanggal</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <?php $i=1 ?>
+                    <?php foreach( $orders as $order) : ?>
+                  <tr>
+                    <td class="col-md-1"> <?= $i?> </td>
+                    <td> <?= $order["date"]?></td>
+                    <td> <?= $order["name"]?></td>
+                    <td> total</td>
+                    <td> <?= $order["status"]?></td>
+                  </tr>
+                     <?php $i++ ?>
+                     <?php endforeach; ?>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -273,7 +347,6 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<script src="plugins/filterizr/jquery.filterizr.min.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -288,21 +361,5 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<script>
-  $(function () {
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-        alwaysShowClose: true
-      });
-    });
-
-    $('.filter-container').filterizr({gutterPixels: 3});
-    $('.btn[data-filter]').on('click', function() {
-      $('.btn[data-filter]').removeClass('active');
-      $(this).addClass('active');
-    });
-  })
-</script>
 </body>
 </html>
