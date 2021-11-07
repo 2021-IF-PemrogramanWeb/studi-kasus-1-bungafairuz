@@ -17,6 +17,42 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+    body {
+      padding : 10px ;
+      
+    }
+
+    #exTab1 .tab-content {
+      color : white;
+      background-color: #428bca;
+      padding : 5px 15px;
+    }
+
+    #exTab2 h3 {
+      color : white;
+      background-color: #428bca;
+      padding : 5px 15px;
+    }
+
+    /* remove border radius for the tab */
+
+    #exTab1 .nav-pills > li > a {
+      border-radius: 0;
+    }
+
+    /* change border radius for the tab , apply corners on top*/
+
+    #exTab3 .nav-pills > li > a {
+      border-radius: 4px 4px 0 0 ;
+    }
+
+    #exTab3 .tab-content {
+      color : white;
+      background-color: #428bca;
+      padding : 5px 15px;
+    }
+  </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -241,8 +277,33 @@
 
     <!-- Main content -->
     <section class="content">
+      <div class="container-fluid">
+        <div>
+          <div class="nav nav-tabs btn-group w-100 mb-2">
+            <a  class="btn btn-info" href="#aaa" data-toggle="tab">Overview</a>
+            <a  class="btn btn-info" href="#bbb" data-toggle="tab">Overview</a>
+            <a  class="btn btn-info" href="#ccc" data-toggle="tab">Overview</a>
+            <a  class="btn btn-info" href="#4a" data-toggle="tab">Overview</a>
+          </div>
+          <div class="tab-content" id="tabs">
+              <div class="tab-pane" id="aaa">
+              <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              </div>
+              <div class="tab-pane" id="bbb">
+                ...Contentb...
+              </div>
+              <div class="tab-pane" id="ccc">
+                ...Contentc...
+              </div>
+          </div>
+      </div>
      
-      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -264,6 +325,17 @@
 </div>
 <!-- ./wrapper -->
 
+<script>
+$(document).ready(function(){
+  activaTab('aaa');
+});
+
+function activaTab(tab){
+  $('.nav-tabs a[href="#' + tab + '"]').tab('show');
+};
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
@@ -274,6 +346,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
 <script src="plugins/filterizr/jquery.filterizr.min.js"></script>
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
@@ -288,21 +361,6 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
-<script>
-  $(function () {
-    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-      event.preventDefault();
-      $(this).ekkoLightbox({
-        alwaysShowClose: true
-      });
-    });
 
-    $('.filter-container').filterizr({gutterPixels: 3});
-    $('.btn[data-filter]').on('click', function() {
-      $('.btn[data-filter]').removeClass('active');
-      $(this).addClass('active');
-    });
-  })
-</script>
 </body>
 </html>
