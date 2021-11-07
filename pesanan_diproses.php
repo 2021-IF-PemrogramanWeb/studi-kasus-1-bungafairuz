@@ -233,12 +233,12 @@
                 </a>
               </li>
               <li class="offset-md-2 nav-item">
-                <a href="#" class="nav-link">
+                <a href="http://localhost/studi-kasus-1-bungafairuz/pesanan_selesai.php" class="nav-link">
                   <p>Pesanan selesai</p>
                 </a>
               </li>
               <li class="offset-md-2 nav-item">
-                <a href="#" class="nav-link">
+                <a href="http://localhost/studi-kasus-1-bungafairuz/pesanan_dibatalkan.php" class="nav-link">
                   <p>Pesanan dibatalkan</p>
                 </a>
               </li>
