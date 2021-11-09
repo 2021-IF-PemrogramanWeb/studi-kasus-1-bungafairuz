@@ -1,6 +1,7 @@
 <?php
   session_start();
-    if(!isset($_SESSION["login"])){
+
+  if(!isset($_SESSION["login"])){
        header("Location: login.php");
        exit;
     }
@@ -161,8 +162,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
+        <a class="nav-link" href="logout_action.php">
+          <i class="fas fa-sign-out-alt"></i> 
         </a>
       </li>
     </ul>
