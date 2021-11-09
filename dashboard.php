@@ -1,7 +1,12 @@
-<!-- <?php
+<?php
+  session_start();
+    if(!isset($_SESSION["login"])){
+       header("Location: login.php");
+       exit;
+    }
     // require 'db_function.php';
     // $foods = query("SELECT * FROM foods");
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
