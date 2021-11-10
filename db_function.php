@@ -12,9 +12,17 @@ function query($query){
     while($row = mysqli_fetch_assoc($result)){
         $rows[] = $row;
     }
-
+    
     return $rows;
 }
 
+function total(){
+    global $db;
+    $result = mysqli_query($db, "SELECT count(*) from orders where status ='diterima'");
+    $total = mysql_result($result, 0);
+    
+    echo $total;
+    return $total;
+}
 
 ?>

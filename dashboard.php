@@ -2,12 +2,15 @@
   session_start();
 
   if(!isset($_SESSION["login"])){
-       header("Location: login.php");
+       header("Location: index.php");
        exit;
     }
-    // require 'db_function.php';
-    // $foods = query("SELECT * FROM foods");
+  
+    require 'db_function.php';
+    
+    
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,17 +128,17 @@
                 </a>
               </li>
               <li class="offset-md-2 nav-item">
-                <a href="#" class="nav-link">
+                <a href="pesanan_diproses.php" class="nav-link">
                   <p>Pesanan diproses</p>
                 </a>
               </li>
               <li class="offset-md-2 nav-item">
-                <a href="#" class="nav-link">
+                <a href="pesanan_selesai.php" class="nav-link">
                   <p>Pesanan selesai</p>
                 </a>
               </li>
               <li class="offset-md-2 nav-item">
-                <a href="#" class="nav-link">
+                <a href="pesanan_dibatalkan.php" class="nav-link">
                   <p>Pesanan dibatalkan</p>
                 </a>
               </li>
@@ -179,10 +182,12 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-utensils"></i></span>
 
               <div class="info-box-content">
+              <?php
+                  $total_produk = query("SELECT count(*) as jumlah from products");
+                ?>
                 <span class="info-box-text">Produk</span>
                 <span class="info-box-number">
-                  10
-                  <small>%</small>
+                  <?= $total_produk[0]["jumlah"] ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -199,8 +204,11 @@
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Penjualan</span>
-                <span class="info-box-number">760</span>
+                <span class="info-box-text">Pesanan</span>
+                <?php
+                  $total_order = query("SELECT count(*) as jumlah from orders where status='selesai'");
+                ?>
+                <span class="info-box-number"><?= $total_order[0]["jumlah"] ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -213,13 +221,108 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Pelanggan</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number">999</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Keuntungan</span>
+                <span class="info-box-number">Rp.999.999</span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <!-- Info boxes -->
+        <h2>Pesanan</h2>
+        <div class="row">
+          <!-- fix for small devices only -->
+          <div class="clearfix hidden-md-up"></div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-utensils"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pesanan diterima</span>
+                <?php
+                  $total = query("SELECT count(*) as jumlah from orders where status = 'diterima'");
+                ?>
+                <span class="info-box-number">
+                  
+                  <?= $total[0]["jumlah"] ?>
+                
+                  <!-- <small>%</small> -->
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-utensils"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pesanan diproses</span>
+                <?php
+                  $total2 = query("SELECT count(*) as jumlah from orders where status = 'diproses'");
+                ?>
+                <span class="info-box-number">
+                <?= $total2[0]["jumlah"] ?>
+                  
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-utensils"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pesanan selesai</span>
+                <?php
+                  $total3 = query("SELECT count(*) as jumlah from orders where status = 'selesai'");
+                ?>
+                <span class="info-box-number">
+                <?= $total3[0]["jumlah"] ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-utensils"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Pesanan dibatalkan</span>
+                <?php
+                  $total4 = query("SELECT count(*) as jumlah from orders where status = 'dibatalkan'");
+                ?>
+                <span class="info-box-number">
+                <?= $total4[0]["jumlah"] ?>
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+         
         </div>
       </div>
     </section>

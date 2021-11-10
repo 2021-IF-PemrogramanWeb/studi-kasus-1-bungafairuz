@@ -11,7 +11,7 @@ if($email === "bunga@cantik" && $pass == "12345"){
     // echo "LOGIN BERHASIL";
 }
 else
-    header("Location: login.php");
+    header("Location: index.php");
     echo "email atau password salah";
 ?>
 
